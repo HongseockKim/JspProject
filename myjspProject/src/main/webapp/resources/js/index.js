@@ -4,6 +4,15 @@ $(document).ready(function() {
         let title = $("[name=title]").val();
         let content = $("[name=content]").val();
         let borderData = {title,content};
+
+        if(title === "") {
+            $("[name=title]").focus();
+            return false
+        }
+        if(content === "") {
+            $("[name=content]").focus();
+            return  false
+        }
         $.ajax({
             "url": "http://localhost:8000/border/data/saves",
             "method": "POST",
@@ -40,5 +49,33 @@ $(document).ready(function() {
             console.log(response)
             location.href = "/"
         })
+    });
+
+    $('.panel-body .thumbnail').on('click', function(e){
+        e.preventDefault();
+        let getId = $(this).parents('.panel').data('id');
+
+        $.ajax({
+            type:'GET',
+            url:`/page/border?id=${getId}`,
+            headers:'application/x-www-form-urlencoded; charset=UTF-8;',
+        }).done(function (response) {
+            console.log(response)
+            location.href = `/page/border?id=${getId}`
+        })
+    });
+
+    $('.pagination a').on('click', function(e){
+        e.preventDefault();
+        let getPage = $(this).data('number');
+
+        $.ajax({
+            type:'GET',
+            url:`/index?page=${getPage}`,
+            headers:'application/x-www-form-urlencoded; charset=UTF-8;',
+        }).done(function (response) {
+            console.log(response)
+        })
+
     });
 })
