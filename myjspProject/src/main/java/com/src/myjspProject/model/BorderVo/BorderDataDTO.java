@@ -5,14 +5,14 @@ import lombok.Setter;
 
 @Getter@Setter
 public class BorderDataDTO {
-    private String id;
+    private Long id;
     private String title;
     private String content;
     private String time;
 
 
     public BorderData toEntity(){
-        return new BorderData(id,title,content,time);
+        return new BorderData(0L,title,content,time);
     }
 
 

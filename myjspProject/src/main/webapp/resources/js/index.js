@@ -14,8 +14,16 @@ $(document).ready(function() {
             "data":JSON.stringify(borderData)
         })
             .done(function (response) {
-                console.log('ewqeqwe');
-                location.reload();
+                $('.modal').append('<div class="alert-tag alert alert-success" role="alert">저장되었습니다.<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>')
+                let reload = setTimeout(function () {
+                    $("button[data-dismiss='alert']").trigger('click');
+                    location.href = "/"
+                },2000);
+
+                $("button[data-dismiss='alert']").on('click',function () {
+                    clearTimeout(reload)
+                    location.href = "/"
+                })
             })
             .fail(function(xhr, textStatus, error){
                 console.log(error);
@@ -26,11 +34,11 @@ $(document).ready(function() {
         let getId =$(this).parents('.panel').data('id');
         $.ajax({
             type:'GET',
-            url:`/delete?id=${getId}`,
-            dataType: 'application/json',
-        });
-        setTimeout(function(){
+            url:`/border/delete?id=${getId}`,
+            headers:'application/x-www-form-urlencoded; charset=UTF-8;',
+        }).done(function (response) {
+            console.log(response)
             location.href = "/"
-        },300)
+        })
     });
 })

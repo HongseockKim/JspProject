@@ -6,18 +6,21 @@ import lombok.Setter;
 import javax.persistence.*;
 
 @Entity
-@Getter @Setter
+@Table(name = "BorderData", schema = "contentdata")
+@Getter
+@Setter
 public class BorderData {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String id;
+    private Long id;
 
-    @Column(name = "title", nullable = false)
+    @Column(name = "title", nullable = false, length = 255)
     private String title;
 
-    @Column(name = "content", nullable = false)
+    @Column(name = "content", nullable = false, length = 255)
     private String content;
 
+    @Column(name = "time", length = 255)
     private String time;
 
 
@@ -27,11 +30,10 @@ public class BorderData {
 
 
 
-    public BorderData (String id, String title, String content, String time) {
+    public BorderData (Long id, String title, String content, String time) {
         this.id = id;
         this.title = title;
         this.content = content;
         this.time = time;
     }
-
 }

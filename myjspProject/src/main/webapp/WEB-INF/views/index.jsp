@@ -30,7 +30,25 @@
                 </div>
             </nav>
         </header>
-        <div class="container-fluid main-container m-top100 p-all30">
+        <div class="clearfix">
+            <div class="pull-left left-panel m-top100 p-all30">
+                <div class="panel panel-default">
+                    <!-- Default panel contents -->
+                    <div class="panel-heading">Panel heading</div>
+                    <div class="panel-body">
+                        <p>...</p>
+                    </div>
+                    <!-- List group -->
+                    <ul class="list-group">
+                        <li class="list-group-item">Cras justo odio</li>
+                        <li class="list-group-item">Dapibus ac facilisis in</li>
+                        <li class="list-group-item">Morbi leo risus</li>
+                        <li class="list-group-item">Porta ac consectetur ac</li>
+                        <li class="list-group-item">Vestibulum at eros</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="right-panel pull-right container-fluid main-container m-top100 p-all30">
             <p>${data}</p>
             <p>${data.size}</p>
             <p>${data.totalPages}</p>
@@ -38,7 +56,7 @@
             <p>${data.first}</p>
             <p>${data.last}</p>
             <c:forEach var="Border" items="${data.content}" varStatus="data" end="${data.size}" >
-                <div class="panel panel-default" data-id="${Border.id}">
+                <div class="panel panel-primary" data-id="${Border.id}">
                     <div class="panel-heading clearfix">
                         <span class="pull-left badge m-r20">${data.index + 1}</span>
                         <span class="pull-left">${Border.title}</span>
@@ -48,25 +66,27 @@
                         </div>
                     </div>
                     <div class="panel-body">
-                      ${Border.content}
+                        ${Border.content}
                     </div>
                 </div>
             </c:forEach>
             <nav class="pagination-wrapper">
                 <ul class="pagination">
-                    <c:if test="${!data.first}">
-                        <li class="disabled"><a href="?page=${data.number-1}" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
-                    </c:if>
-                    <c:forEach var="page" items="${data.content}" varStatus="data" end="${data.totalPages - 1}">
-                        <li class="active"><a href="#">${data.index + 1} <span class="sr-only">1</span></a></li>
-                    </c:forEach>
-                    <c:if test="${!data.last}">
-                        <li class="disabled"><a href="?page=${data.number+1}" aria-label="Previous"><span aria-hidden="true">&rarr;</span></a></li>
-                    </c:if>
+<%--                    <c:if test="${!data.first}">--%>
+<%--                        <li class="disabled"><a href="?page=${data.number-1}" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>--%>
+<%--                    </c:if>--%>
+<%--                    <c:forEach var="page" items="${data.content}" varStatus="data" end="${data.totalPages - 1}">--%>
+<%--                        <li class="active"><a href="#">${data.index + 1} <span class="sr-only">1</span></a></li>--%>
+<%--                    </c:forEach>--%>
+<%--                    <c:if test="${!data.last}">--%>
+<%--                        <li class="disabled"><a href="?page=${data.number+1}" aria-label="Previous"><span aria-hidden="true">&rarr;</span></a></li>--%>
+<%--                    </c:if>--%>
                 </ul>
             </nav>
         </div>
+        </div>
     </div>
+
 <%--    모달--%>
     <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">

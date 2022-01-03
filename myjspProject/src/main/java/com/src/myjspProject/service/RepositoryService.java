@@ -5,16 +5,13 @@ import com.src.myjspProject.model.BorderVo.BorderDataDTO;
 import com.src.myjspProject.repository.BorderRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
-import org.springframework.ui.Model;
 
 import javax.transaction.Transactional;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -25,12 +22,11 @@ public class RepositoryService {
 
 
     @Transactional
-    public String getDataSave(final BorderDataDTO borderData){
+    public void getDataSave(final BorderDataDTO borderData){
         SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd:HH:mm");
         Date times = new Date();
         borderData.setTime(date.format(times));
         BorderData data =  borderRepository.save( borderData.toEntity());
-        return data.getId();
     }
 
     @Transactional
@@ -40,9 +36,9 @@ public class RepositoryService {
 
 
     @Transactional
-    public void  getBorderId(BorderData  id){
-
-        borderRepository.deleteById(id.getId());
+    public void getBorderId(BorderDataDTO  id){
+        BorderData dats = borderRepository.getById(id.getId());
+        borderRepository.deleteById(dats.getId());
     }
 
 }
