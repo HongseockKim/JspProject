@@ -2,7 +2,12 @@ package com.src.myjspProject.service;
 
 import com.src.myjspProject.model.BorderVo.BorderData;
 import com.src.myjspProject.model.BorderVo.BorderDataDTO;
+import com.src.myjspProject.model.BorderVo.Comment;
+import com.src.myjspProject.model.BorderVo.CommentDTO;
 import com.src.myjspProject.repository.BorderRepository;
+import com.src.myjspProject.repository.CommentRepository;
+
+import antlr.collections.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -18,9 +23,9 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-//@RequiredArgsConstructor 는 lombok 이 초기화 되지 않은 필드를 생성합니다. 이를 통해서 의존성 주입(Dependency Injection)을 할 수 있습니다.
 public class RepositoryService {
     private final BorderRepository borderRepository;
+    private final CommentRepository commentRepository;
 
     @Transactional
     public void getDataSave(final BorderDataDTO borderData){
@@ -41,7 +46,7 @@ public class RepositoryService {
         BorderData dats = borderRepository.getById(id.getId());
         borderRepository.deleteById(dats.getId());
     }
-    
+
     @Transactional
     public Optional  getBorderPage(BorderDataDTO id){
         BorderData data = borderRepository.getById(id.getId());
@@ -54,5 +59,23 @@ public class RepositoryService {
         datas.setContent(dats.getContent());
         return "index";
     }
+
+    @Transactional
+    public void getComment(CommentDTO data) {
+    	 SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd:HH:mm");
+         Date times = new Date();
+    	data.setTime(date.format(times));
+    	Comment datas = commentRepository.save(data.toEntity());
+    }
+
+//    @Transactional
+//    public void getCommentId(Model model,int borderId) {
+//    	Comment data = commentRepository.findAllBorderId();
+//    	 System.out.println("@222222222222222222222222222222222");
+//    	 System.out.println(borderId);
+//    	 System.out.println("@222222222222222222222222222222222");
+//    	 System.out.println(data);
+////    	 model.addAttribute("comment",data);
+//    }
 
 }

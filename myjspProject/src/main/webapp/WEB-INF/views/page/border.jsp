@@ -57,11 +57,33 @@
 		$(document).ready(function(){
 			$(".commet-btn").on('click',function(){
 				let commentValue = $('.commet-textarea').val();
+				let borderId = $('.panel-body').data('id');
 				console.log(commentValue);
+				console.log(borderId);
+
+				$.ajax({
+					"url": "/page/border/comment",
+					"method": "POST",
+					"timeout": 0,
+					"headers": {
+						"Content-Type": "application/json",
+					},
+					"data":JSON.stringify({
+						borderId: borderId,
+						comments: commentValue
+					})
+				})
+				.done(function(response){
+					console.log(response);
+				})
+
 			});
+
+
 			// modify
 			$('.modify-btn').on('click',function(){
 				$(this).addClass('hidden');
+				$('.commet-btn').addClass('hidden');
 				$('.content-container').addClass('hidden');
 				$('.modify-container').removeClass('hidden');
 				$('.modify-container').addClass('show');
@@ -88,6 +110,15 @@
 				})
 				.done(function(response){
 					console.log(response);
+					$('.panel-body').append('<div class="alert-tag alert alert-success" role="alert">저장되었습니다.<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>')
+					setTimeout(function(){
+						$('.close').trigger('click');
+						location.href= '/'
+					},600);
+
+					$('.close').on('click',function(){
+						location.href= "/"
+					});
 				})
 
 			});

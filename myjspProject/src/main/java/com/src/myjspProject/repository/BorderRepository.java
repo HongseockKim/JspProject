@@ -2,6 +2,8 @@ package com.src.myjspProject.repository;
 
 import com.src.myjspProject.model.BorderVo.BorderData;
 import com.src.myjspProject.model.BorderVo.BorderDataDTO;
+import com.src.myjspProject.model.BorderVo.Comment;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -9,4 +11,6 @@ import org.springframework.stereotype.Repository;
 public interface BorderRepository extends JpaRepository<BorderData, Long> {
 
 }
+
+
 

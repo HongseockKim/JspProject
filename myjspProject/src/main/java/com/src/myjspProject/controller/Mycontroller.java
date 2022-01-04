@@ -1,6 +1,7 @@
 package com.src.myjspProject.controller;
 
 import com.src.myjspProject.model.BorderVo.BorderDataDTO;
+import com.src.myjspProject.model.BorderVo.CommentDTO;
 import com.src.myjspProject.service.RepositoryService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,18 +12,19 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.List;
+import java.util.List;import javax.persistence.Id;
 
 @Controller
 public class Mycontroller {
-    @Autowired  private RepositoryService service;
+	@Autowired
+    private RepositoryService service;
 
-private final Logger logger = LoggerFactory.getLogger(getClass());
 
 
     @PostMapping(value = "/border/data/saves")
@@ -30,7 +32,7 @@ private final Logger logger = LoggerFactory.getLogger(getClass());
         service.getDataSave(borderData);
         return "index";
     }
-    
+
     @GetMapping(value = "/")
     public String getData(Model model, @PageableDefault(size = 10, sort = "id", direction = Sort.Direction.DESC)Pageable pageable) throws IOException{
         model.addAttribute("data",service.getFindAllData(pageable));
@@ -60,11 +62,25 @@ private final Logger logger = LoggerFactory.getLogger(getClass());
     }
 
     @GetMapping(value = "/page/border")
-    public String getBorderPage(Model model, @ModelAttribute BorderDataDTO id) throws IOException{
+    public String getBorderPage(Model model, @ModelAttribute BorderDataDTO id,CommentDTO borderId) throws IOException{
         System.out.println("id = " + id.getId());
+       System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+        System.out.println(borderId.getId());
+        System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
         service.getBorderPage(id);
+
+//        service.getCommentId(model, borderId);
+
         model.addAttribute("page",service.getBorderPage(id));
         return "page/border";
+    }
+
+    @PostMapping(value = "/page/border/comment")
+    public String getBorderComment(Model model,@RequestBody CommentDTO data) {
+
+    	service.getComment(data);
+
+    	return "page/border";
     }
 
     @PostMapping(value = "/page/border/update")
