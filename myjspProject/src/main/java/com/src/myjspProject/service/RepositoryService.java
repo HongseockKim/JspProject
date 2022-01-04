@@ -48,4 +48,11 @@ public class RepositoryService {
          return borderRepository.findById(id.getId());
     }
 
+    @Transactional
+    public String getBorderPageContentUpdate(BorderDataDTO dats) {
+        BorderData datas = borderRepository.getById(dats.getId());
+        datas.setContent(dats.getContent());
+        return "index";
+    }
+
 }

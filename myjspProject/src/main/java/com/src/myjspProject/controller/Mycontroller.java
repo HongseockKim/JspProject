@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 
 @Controller
 public class Mycontroller {
@@ -63,6 +64,13 @@ private final Logger logger = LoggerFactory.getLogger(getClass());
         System.out.println("id = " + id.getId());
         service.getBorderPage(id);
         model.addAttribute("page",service.getBorderPage(id));
+        return "page/border";
+    }
+
+    @PostMapping(value = "/page/border/update")
+    public String getBorderPageUpdate(Model model,@RequestBody BorderDataDTO data) throws IOException{
+        System.out.println(data);
+        service.getBorderPageContentUpdate(data);
         return "page/border";
     }
 }

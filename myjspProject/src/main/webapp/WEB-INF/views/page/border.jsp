@@ -28,9 +28,14 @@
 				<div class="panel-heading">
 					<h3 class="panel-title">Title : ${page.get().title}</h3>
 				</div>
-				<div class="panel-body">
+				<div class="panel-body" data-id="${page.get().id}">
 					<p>작성일 : <span class="date-badge badge">${page.get().time}</span></p>
-					${page.get().content}
+					<div class="content-container">
+						${page.get().content}
+					</div>
+					<div class="modify-container hidden">
+						<textarea class="modify-text form-control" rows="5">${page.get().content}</textarea>
+					</div>
 					<div class="panel panel-default m-top30">
 					  <div class="panel-heading">
 					    <h3 class="panel-title">댓글</h3>
@@ -38,6 +43,8 @@
 					  <div class="panel-body">
 					    <textarea class="form-control commet-textarea" rows="5"></textarea>
 					    <div class="text-right p-20">
+							<button type="button" class="btn btn-success modify-btn">수정</button>
+							<button type="button" class="btn btn-success modify-save-btn hidden">저장하기</button>
 					    	<button type="button" class="btn btn-success commet-btn">댓글달기</button>
 					    </div>
 					  </div>
@@ -52,6 +59,39 @@
 				let commentValue = $('.commet-textarea').val();
 				console.log(commentValue);
 			});
+			// modify
+			$('.modify-btn').on('click',function(){
+				$(this).addClass('hidden');
+				$('.content-container').addClass('hidden');
+				$('.modify-container').removeClass('hidden');
+				$('.modify-container').addClass('show');
+				$('.modify-save-btn').removeClass('hidden');
+				$('.modify-save-btn').addClass('show');
+			});
+			$('.modify-save-btn').on('click',function(){
+				let modifyText = $('.modify-text').val();
+				let modifyContentId = $('.panel-body').data('id');
+				console.log(modifyText);
+				console.log(modifyContentId);
+
+				$.ajax({
+					"url": "/page/border/update",
+					"method": "POST",
+					"timeout": 0,
+					"headers": {
+						"Content-Type": "application/json",
+					},
+					"data":JSON.stringify({
+						id: modifyContentId,
+						content: modifyText
+					})
+				})
+				.done(function(response){
+					console.log(response);
+				})
+
+			});
+
 		});
 	</script>
 </body>
