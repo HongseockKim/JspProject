@@ -57,7 +57,7 @@ $(document).ready(function() {
 
         $.ajax({
             type:'GET',
-            url:`/page/border?id=${getId}`,
+            url:`/page/border?id=${getId}&borderId=${getId}`,
             headers:'application/x-www-form-urlencoded; charset=UTF-8;',
         }).done(function (response) {
             console.log(response)

@@ -64,9 +64,9 @@ public class Mycontroller {
     @GetMapping(value = "/page/border")
     public String getBorderPage(Model model, @ModelAttribute BorderDataDTO id,CommentDTO borderId) throws IOException{
         System.out.println("id = " + id.getId());
-       System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
-        System.out.println(borderId.getId());
-        System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+
+
+        service.getCommentId(model, borderId);
         service.getBorderPage(id);
 
 //        service.getCommentId(model, borderId);

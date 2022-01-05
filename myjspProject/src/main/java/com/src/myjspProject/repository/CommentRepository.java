@@ -12,6 +12,6 @@ import com.src.myjspProject.model.BorderVo.Comment;
 
 @Repository
 public interface CommentRepository extends JpaRepository<Comment, Long> {
-//	@Query(value = "select * from comment where borderId = 16",nativeQuery = true)
-//	List<Comment> findAllBorderId();
+	@Query(value = "select * from comment where borderId = ?",nativeQuery = true)
+	List<Comment> findAllById(long borderid);
 }

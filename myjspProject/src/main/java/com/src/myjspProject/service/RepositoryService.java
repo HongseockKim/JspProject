@@ -7,7 +7,8 @@ import com.src.myjspProject.model.BorderVo.CommentDTO;
 import com.src.myjspProject.repository.BorderRepository;
 import com.src.myjspProject.repository.CommentRepository;
 
-import antlr.collections.List;
+//import antlr.collections.List;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -68,14 +69,13 @@ public class RepositoryService {
     	Comment datas = commentRepository.save(data.toEntity());
     }
 
-//    @Transactional
-//    public void getCommentId(Model model,int borderId) {
-//    	Comment data = commentRepository.findAllBorderId();
-//    	 System.out.println("@222222222222222222222222222222222");
-//    	 System.out.println(borderId);
-//    	 System.out.println("@222222222222222222222222222222222");
-//    	 System.out.println(data);
-////    	 model.addAttribute("comment",data);
-//    }
+    @Transactional
+    public void getCommentId(Model model,CommentDTO borderId) {
+    	System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+
+    	List<Comment> data = commentRepository.findAllById(borderId.getBorderId());
+    	System.out.println(data);
+//    	 model.addAttribute("comment",data);
+    }
 
 }
