@@ -1,4 +1,10 @@
 $(document).ready(function() {
+	$('.goTo-youTube').on('click',function(){
+		location.href= "/youtube/main"
+	});
+	$('.goTo-dashborad').on('click',function(){
+		location.href = "/dashborad/main"
+	});
 
     $('.handle-save').on('click', function(){
         let title = $("[name=title]").val();

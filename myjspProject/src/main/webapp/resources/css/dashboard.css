@@ -1,0 +1,33 @@
+@charset "EUC-KR";
+.dashborad-area{position:fixed;top:0;left:0;width:100%; background:#4B4453;height:100%;}
+.dashborad-main{background:#4B4453;width:98%;height:98%;position:relative;top:50%;left:50%;transform:translate(-50%,-50%);}
+.left-area{background:#fff;height:100%;}
+.dashborad-header{min-height:70px;background:#fff;}
+.header-logo{color:#2C73D2;}
+
+/*ui-datepicker*/
+.ui.modal.calendar>.header:not(.ui){text-align:center;font-size:2rem;}
+.ui-widget-header{background:#F9F9F9; color:#747B7F;}
+.ui-datepicker th span{font-size:2rem;}
+.ui-datepicker .ui-datepicker-prev, .ui-datepicker .ui-datepicker-next{top:50px;width:2rem;height:2rem; transform:scale(1.5);cursor:pointer;}
+.ui-datepicker .ui-datepicker-header{height:150px;font-size:2rem;padding-top:50px;}
+.ui-datepicker{ font-size: 12px; width:100%; height:450px; }
+ .ui-datepicker select.ui-datepicker-month{ width:30%;height:100px; font-size: 11px; }
+  .ui-datepicker select.ui-datepicker-year{ width:40%; height:100px; font-size: 11px; }
+.ui-state-default, .ui-widget-content .ui-state-default{padding: 30px 0;}
+
+/* dash-list*/
+.left-area{padding-top:50px;}
+.list-group .list-group-item a{position:relative;padding-left:50px;font-size:1.5rem;padding:10px 50px 10px 50px;}
+.list-group .list-group-item .icon{position:absolute;top:50%;transform:translateY(-50%);left:10px;}
+
+/*registrationButton*/
+.registrationButton .icon{position:relative;left:10px;}
+
+/*dash-borad chart*/
+.charjs-area-wrap{padding:0;background:#fff;height:100%;}
+#myChart{width:100%!important;height:650px!important;}
+/*card-area*/
+.card-area{position:relative; padding:10px 0;height:calc(100% - 720px);overflow-y:scroll;}
+.card-area .erroe-text{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:1.2vw;font-weight:bold;}
+.dash-navigation{padding-top:15px;}

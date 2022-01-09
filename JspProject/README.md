@@ -1,2 +1,0 @@
-# JspProject
-myJspProject

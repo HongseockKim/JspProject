@@ -1,3 +1,4 @@
+*{margin:0;padding:0;list-style:none;}
 body {
 	background: #333;
 	min-width: 600px;
@@ -9,6 +10,11 @@ body {
 	background: #333;
 	padding: 20px 0;
 }
+
+.comment-list{position:relative;}
+.comment-list .comment{width:100%;}
+.comment-list .label-tag{width:100%;padding:10px 0;}
+.delete-comment-btn{position:absolute;top:-4px;right:4px;}
 
 .date-badge{padding:5px 10px;background:#59b9ff;}
 header {
@@ -26,6 +32,9 @@ header {
 
 .p-all30 {
 	padding: 30px;
+}
+.p-all20 {
+	padding:20px;
 }
 
 .mb100 {
@@ -52,6 +61,8 @@ header {
 	margin-top: 30px;
 }
 
+.p-t30{padding-top:30px;}
+
 .main-container {
 	background: #FDF7FF;
 }
@@ -70,7 +81,7 @@ header {
 }
 
 .right-panel {
-	border-radius: 15px;
+/* 	border-radius: 15px; */
 }
 
 .alert-tag {
@@ -82,3 +93,13 @@ header {
 }
 .text-right{text-align:right;}
 .p-20{padding:20px;}
+
+#main-item-area .item{max-height:550px;}
+.ellipsis{text-overflow:ellipsis;overflow:hidden;white-space:nowrap;min-width:250px;display:block;}
+.flex-wrap{display:flex;justify-content:flex-start;align-items:center;}
+.fb-20{flex-basis: 200px;}
+.serach-tag{flex-basis: calc(100% - 200px);}
+
+.modal-dialog{width:100%;height:100%;margin:0;}
+.modal-content{width:95%;height:95%; top:50%;left:50%;transform:translate(-50%,-50%);}
+.modal-content .modal-body{height:calc(100% - 120px);}

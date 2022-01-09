@@ -28,9 +28,12 @@
 				<nav class="navigation-tag container-fluid">
 					<div class="inner row">
 						<div class="col-md-3"></div>
-						<div class="col-md-9">
-							<button type="button" class="btn btn-primary" data-toggle="modal"
-								data-target=".bs-example-modal-lg">글쓰기</button>
+						<div class="col-md-2">
+							<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">글쓰기</button>
+						</div>
+						<div class="col-md-7">
+							<button type="button" class="btn btn-danger btn-lg btn-block goTo-youTube">YouTube</button>
+							<button type="button" class="btn btn-danger btn-lg btn-block goTo-dashborad">DashBord</button>
 						</div>
 					</div>
 				</nav>

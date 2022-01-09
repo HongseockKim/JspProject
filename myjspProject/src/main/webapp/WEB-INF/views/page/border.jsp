@@ -1,5 +1,7 @@
 
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="C" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <head>
 <title>Title</title>
@@ -42,6 +44,19 @@
 					  </div>
 					  <div class="panel-body">
 					    <textarea class="form-control commet-textarea" rows="5"></textarea>
+					   <div class="comment-area m-top30">
+					  	<ul class="list-group">
+					  	<c:forEach var="comments" items="${comment}" varStatus="comment">
+					  		<li data-comment-id="${comments.id}" class="comment-list list-group-item clearfix">
+						  		<span class="comment pull-left">${comments.comments}</span>
+						  		<div class="label-tag pull-right text-right">
+						  			<span class="label label-primary">${comments.time}</span>
+						  		</div>
+						  		<button type="button" class="close delete-comment-btn" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					  		</li>
+					  	</c:forEach>
+						</ul>
+					   </div>
 					    <div class="text-right p-20">
 							<button type="button" class="btn btn-success modify-btn">수정</button>
 							<button type="button" class="btn btn-success modify-save-btn hidden">저장하기</button>
@@ -75,6 +90,7 @@
 				})
 				.done(function(response){
 					console.log(response);
+					location.reload();
 				})
 
 			});
@@ -110,9 +126,9 @@
 				})
 				.done(function(response){
 					console.log(response);
-					$('.panel-body').append('<div class="alert-tag alert alert-success" role="alert">저장되었습니다.<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>')
+					$('.panel-body').append('<div class="alert-tag alert alert-success" role="alert">저장되었습니다.<button type="button" class="modify-restroe close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>')
 					setTimeout(function(){
-						$('.close').trigger('click');
+						$('.modify-restroe').trigger('click');
 						location.href= '/'
 					},600);
 
@@ -120,7 +136,32 @@
 						location.href= "/"
 					});
 				})
+			});
 
+			// delete commnet
+			$('.delete-comment-btn').on('click',function(){
+				let commentId = $(this).parents('.comment-list').data('comment-id');
+				console.log(commentId);
+
+
+				$.ajax({
+					"url": "/page/border/commnet/delete",
+					"method": "POST",
+					"timeout": 0,
+					"headers": {
+						"Content-Type": "application/json",
+					},
+					"data":JSON.stringify({
+						id: commentId
+					})
+				})
+				.done(function(response){
+					console.log(response);
+					$('.panel-body').append('<div class="alert-tag alert alert-danger" role="alert">삭제되었습니다..<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>')
+					setTimeout(function(){
+						location.reload();
+					},600);
+				})
 			});
 
 		});
