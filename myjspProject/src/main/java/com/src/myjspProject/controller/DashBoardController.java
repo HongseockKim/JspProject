@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.src.myjspProject.model.chartDataVo.DashBoardeData;
 import com.src.myjspProject.model.chartDataVo.DashBoardeDataDTO;
+import com.src.myjspProject.model.memberVo.MemberDTO;
 import com.src.myjspProject.myView.MyView;
 import com.src.myjspProject.service.RepositoryService;
 
@@ -46,6 +47,12 @@ public class DashBoardController {
 	public String getDashBoardData(@RequestBody DashBoardeDataDTO dataValue) throws Exception {
 
 		return service.getDashBoradData(dataValue);
+	}
+
+	@PostMapping(value="/member/register")
+	public String getMemberData(@RequestBody MemberDTO memberData) {
+		System.out.println(memberData.getName());
+		return "dashborad/dashborad";
 	}
 
 }

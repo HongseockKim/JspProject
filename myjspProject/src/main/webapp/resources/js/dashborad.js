@@ -1,8 +1,36 @@
 $(document).ready(function(){
+	/*회원가입 */
+	// $('.fullscreen.modal').modal('show')
+	$('.member-reg-agree').on('click',function(){
+		let id = $('#userId').val();
+		let name = $('#name').val();
+		let email = $('#email').val() + '@' + $('.ui.dropdown .text').text();
+		let password = $('#password').val();
+		let age = $('#age').val();
+		let memberData = {"id":id,"name":name,"email":email, "password":password, "age":age}
+		console.log(memberData);
+	});
+
+	$('.member-reg').tooltip();
+	$('.ui.dropdown')
+		  .dropdown({
+		    values: [
+		      {
+		        name: 'gmail.com',
+		        value: 'gmail.com'
+		      },
+		      {
+		        name     : 'naver.com',
+		        value    : 'naver.com',
+		        selected : true
+		      }
+		    ]
+		  })
+		;
 
 	/*달력보기*/
 	$('.calendar-view').on('click',function(e){
-		e.preventDefault();
+//		e.preventDefault();
 		console.log("eqweqwe");
 		$('.ui.modal.calendar').modal('show');
 

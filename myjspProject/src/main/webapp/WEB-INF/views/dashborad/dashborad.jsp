@@ -10,6 +10,8 @@
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js"></script>
+<script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <!-- semantic- ui -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js" ></script>
 <!-- 합쳐지고 최소화된 최신 CSS -->
@@ -20,9 +22,8 @@
 <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/style.css">
 <!-- semantic-css -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"/>
-<!-- fullcalendar -->
-<script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
-  <link rel="stylesheet" href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
 
 <script src="<%=request.getContextPath()%>/resources/js/dashborad.js"></script>
 
@@ -160,6 +161,52 @@
 		      <i class="checkmark icon"></i>
 		    </div>
 		  </div>
+		</div>
+		<div class="ui active modal member-reg ">
+			<div class="header">등록하기</div>
+			<div class="container-fluid member-reg-wrap">
+				<form class="form-horizontal member-reg">
+				  <div class="form-group form-group-lg">
+				    <label for="userId" class="col-sm-2 control-label" title="중복 확인을 해주세요">아이디</label>
+				    <div class="col-sm-10">
+				      <input id="userId" type="text" class="form-control" title="중복 확인을 해주세요" placeholder="ID">
+				    </div>
+				  </div>
+				  <div class="form-group form-group-lg">
+				    <label for="name" class="col-sm-2 control-label">이름</label>
+				    <div class="col-sm-10">
+				      <input type="text" class="form-control" id="name" placeholder="name">
+				    </div>
+				  </div>
+				  <div class="form-group form-group-lg">
+				    <label for="email" class="col-sm-2 control-label">이메일</label>
+				    <div class="col-sm-5">
+				      <input type="email" class="form-control" id="email" placeholder="email">
+				    </div>
+				    <div class="col-sm-5">
+					    <div class="ui dropdown">
+						  <div class="text"></div>
+						  <i class="dropdown icon"></i>
+						</div>
+					</div>
+				</div>
+				  <div class="form-group form-group-lg">
+				    <label for="password" class="col-sm-2 control-label">비밀번호</label>
+				    <div class="col-sm-10">
+				      <input type="password" class="form-control" id="password" placeholder="password">
+				    </div>
+				  </div>
+				  <div class="form-group form-group-lg">
+				    <label for="age" class="col-sm-2 control-label">나이</label>
+				    <div class="col-sm-10">
+				      <input type="text" class="form-control" id="age" placeholder="age">
+				    </div>
+				  </div>
+				  <div class="col-xs-12 member-reg-agree-wrap">
+				  	<button type="button" class="btn btn-success member-reg-agree">등록하기</button>
+				  </div>
+			 </form>
+			</div>
 		</div>
 	</div>
 </body>

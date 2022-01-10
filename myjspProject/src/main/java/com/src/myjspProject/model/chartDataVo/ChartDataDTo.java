@@ -1,7 +1,5 @@
 package com.src.myjspProject.model.chartDataVo;
 
-import com.src.myjspProject.model.BorderVo.BorderData;
-
 import lombok.Getter;
 import lombok.Setter;
 

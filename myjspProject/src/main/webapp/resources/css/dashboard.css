@@ -5,6 +5,14 @@
 .dashborad-header{min-height:70px;background:#fff;}
 .header-logo{color:#2C73D2;}
 
+/*member-reg*/
+.ui.modal.member-reg{width:100%;}
+.member-reg-wrap{padding:100px 0  30px; max-width:1200px;margin:0 auto;}
+.member-reg-wrap .form-group{margin-bottom:50px;}
+.email-select{width:100%;border-radius:7px;}
+.member-reg-agree-wrap{text-align:center;}
+
+
 /*ui-datepicker*/
 .ui.modal.calendar>.header:not(.ui){text-align:center;font-size:2rem;}
 .ui-widget-header{background:#F9F9F9; color:#747B7F;}

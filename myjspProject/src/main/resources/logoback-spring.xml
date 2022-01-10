@@ -15,10 +15,10 @@
 		</encoder>
 	</appender>
 
-<Loggers>
+	<Loggers>
         <!-- jdbc.sql Loggers -->
         <!--  <Logger name="jdbc.connection"      level="WARN" additivity="false"><AppenderRef ref="console" /></Logger> -->
-        <Logger name="jdbc.audit"           level="WARN" additivity="false"><AppenderRef ref="console" /></Logger>
+        <!--   <Logger name="jdbc.audit"           level="WARN" additivity="false"><AppenderRef ref="console" /></Logger> -->
         <Logger name="jdbc.sqlonly"         level="DEBUG" additivity="false"><AppenderRef ref="console" /></Logger>
         <Logger name="jdbc.sqltiming"       level="WARN" additivity="false"><AppenderRef ref="console" /></Logger>
         <!--   <Logger name="jdbc.resultset"       level="DEBUG" additivity="true"><AppenderRef ref="console" /></Logger> -->
